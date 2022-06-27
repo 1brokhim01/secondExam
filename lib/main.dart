@@ -1,22 +1,23 @@
+import 'package:exam/routes/my_routes.dart';
 import 'package:flutter/material.dart';
-import 'package:secondexam/routes/on_generate_route.dart';
+import 'package:get_storage/get_storage.dart';
 
-void main() {
-  runApp(MyApp());
+void main() async {
+  await GetStorage.init();
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({Key? key}) : super(key: key);
+  const MyApp({Key? key}) : super(key: key);
 
-  final routess = Routess();
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'UBC',
-      theme: ThemeData(primarySwatch: Colors.blue),
+      title: 'Organico',
+      theme: ThemeData(),
       debugShowCheckedModeBanner: false,
-      onGenerateRoute: routess.onGenerateRoutes,
-      initialRoute: "/",
+      onGenerateRoute: MyRoutes.instanse.onGenerate,
+      initialRoute: "/splash",
     );
   }
 }
